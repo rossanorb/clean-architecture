@@ -2,7 +2,7 @@
   "name": "audiovisao",
   "version": "1.0.0",
   "description": "e-commerce",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts"
   },
