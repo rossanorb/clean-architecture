@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+    api:
+        container_name: "audiovisao_api"
+        build:
+            ./api
+        volumes:
+            - ./api:/usr/app
+            - /usr/app/node_modules
+        ports:
+            - "9000:9000"
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.node.rule=Host(`api.audiovisao-localhost.com`)"
+            - "traefik.http.routers.node.entrypoints=web"
+    traefik:
+        image: "traefik:v2.2"
+        container_name: "audiovisao_traefik"
+        command:
+            - "--api.insecure=true"
+            - "--providers.docker=true"
+            - "--providers.docker.exposedbydefault=false"
+            - "--entrypoints.web.address=:80"
+        ports:
+            - "80:80"
+            - "8080:8080"
+        volumes:
+            - "/var/run/docker.sock:/var/run/docker.sock:ro"
