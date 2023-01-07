@@ -17,7 +17,7 @@ export class UserValidator {
             validators = {
                 name: "required",
                 email: "required|email",
-                password: "required|minlength:6|confirm"
+                password: "required|minlength:6"
             };
         }
 

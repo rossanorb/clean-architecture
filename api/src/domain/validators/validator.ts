@@ -110,6 +110,18 @@ export class Validator {
         }
     }
 
+    minlength(field: string, length: number) {
+        const value = this.data["" + field + ""] || "";
+        if (value.length < length) {
+            const field_name = this.attribute(field);
+            this.setError(
+                field,
+                "email",
+                `Campo ${field_name} deve possuir ${length} caracteres ou mais`
+            );
+        }
+    }
+
     email(field: string) {
         const value = this.data["" + field + ""] || "";
         const reg = new RegExp(

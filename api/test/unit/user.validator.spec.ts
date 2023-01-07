@@ -4,11 +4,12 @@ describe("Test user validator", () => {
     it("Should return that name is required", () => {
         const validator = new UserValidator({
             name: "",
-            email: "rossanorb@gmail.com"
+            email: "rossanorb@gmail.com",
+            password: "A1b!r102"
         });
         validator.fail();
+        console.log(validator.getErrors());
 
-        expect(validator).toBeInstanceOf(UserValidator);
         expect(validator.getErrors()).toEqual({
             name: {
                 required: "O campo Nome é obrigatório"
@@ -17,7 +18,11 @@ describe("Test user validator", () => {
     });
 
     it("Should return that email is required and email is invalid", () => {
-        const validator = new UserValidator({ name: "Rossano", email: "" });
+        const validator = new UserValidator({
+            name: "Rossano",
+            email: "",
+            password: "A1b!r102"
+        });
         validator.fail();
 
         expect(validator).toBeInstanceOf(UserValidator);
@@ -32,7 +37,8 @@ describe("Test user validator", () => {
     it("Should return that just only the email is invalid", () => {
         const validator = new UserValidator({
             name: "Rossano",
-            email: "rossanorb@gmail"
+            email: "rossanorb@gmail",
+            password: "A1b!r102"
         });
         validator.fail();
 
@@ -47,7 +53,8 @@ describe("Test user validator", () => {
     it("Should not return any error message", () => {
         const validator = new UserValidator({
             name: "Rossano",
-            email: "rossanorb@gmail.com"
+            email: "rossanorb@gmail.com",
+            password: "A1b!r102"
         });
         validator.fail();
 
