@@ -17,25 +17,13 @@ export class Validator {
     private data: any = {};
     private validators: any = {};
     private attributes: any = {};
-    private errors: any = {};
+    static errors: any = {};
+    static fail: boolean;
 
     constructor(validator: validatorType) {
         this.data = validator.data;
         this.validators = validator.validators;
         this.attributes = validator.attributes;
-        this.errors = {};
-    }
-
-    fail() {
-        Object.entries(this.validators).forEach(([key, value]) => {
-            this.call(key, value);
-        });
-
-        const props = Object.values(this.errors);
-        if (props.length > 0) {
-            return true;
-        }
-        return false;
     }
 
     call(key: string, value: any) {
@@ -55,10 +43,16 @@ export class Validator {
         }
     }
 
-    valid() {
+    invalid() {
         Object.entries(this.validators).forEach(([key, value]) => {
             this.call(key, value);
         });
+
+        const props = Object.values(Validator.errors);
+        if (props.length > 0) {
+            return true;
+        }
+        return false;
     }
 
     attribute(field: string) {
@@ -76,23 +70,39 @@ export class Validator {
     }
 
     setError(field: string, validator: string, message: string) {
+        Validator.fail = true;
         const itHasProperty: boolean = Object.prototype.hasOwnProperty.call(
-            this.errors,
+            Validator.errors,
             field
         );
 
         if (itHasProperty) {
-            Object.assign(this.errors[field], { [validator]: `${message}` });
+            Object.assign(Validator.errors[field], {
+                [validator]: `${message}`
+            });
         }
 
         if (!itHasProperty) {
-            Object.assign(this.errors, { [field]: {} });
-            Object.assign(this.errors[field], { [validator]: `${message}` });
+            Object.assign(Validator.errors, { [field]: {} });
+            Object.assign(Validator.errors[field], {
+                [validator]: `${message}`
+            });
         }
     }
 
-    getErrors() {
-        return this.errors;
+    getErrors(keep?: boolean) {
+        if (keep) {
+            return Validator.errors;
+        }
+
+        const errors = Validator.errors;
+        Validator.errors = {};
+        Validator.fail = false;
+        return errors;
+    }
+
+    hasError(): boolean {
+        return Validator.fail;
     }
 
     //****** filters go below *********
@@ -116,7 +126,7 @@ export class Validator {
             const field_name = this.attribute(field);
             this.setError(
                 field,
-                "email",
+                "minlength",
                 `Campo ${field_name} deve possuir ${length} caracteres ou mais`
             );
         }

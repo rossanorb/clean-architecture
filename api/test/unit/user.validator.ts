@@ -1,4 +1,4 @@
-import { UserValidator } from "../../src/domain/validators/user.validator";
+import { UserValidator } from "../../src/domain/validators.old/user.validator";
 
 describe("Test user validator", () => {
     it("Should return that name is required", () => {
