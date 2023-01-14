@@ -1,6 +1,6 @@
 import { UseValidator } from "../../../src/domain/valitadors/use.validator";
 import { EmailValidator } from "../../../src/domain/valitadors/email.validator";
-import { NameValidator } from "../../../src/domain/valitadors/name.validators";
+import { NameValidator } from "../../../src/domain/valitadors/name.validator";
 
 describe("Test use Validator", () => {
     it("should return email is valid", () => {
