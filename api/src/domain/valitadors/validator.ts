@@ -132,6 +132,18 @@ export class Validator {
         }
     }
 
+    maxlength(field: string, length: number) {
+        const value = this.data["" + field + ""] || "";
+        if (value.length > length) {
+            const field_name = this.attribute(field);
+            this.setError(
+                field,
+                "maxlength",
+                `Campo ${field_name} deve possuir o limite máximo de ${length} caracteres`
+            );
+        }
+    }
+
     email(field: string) {
         const value = this.data["" + field + ""] || "";
         const reg = new RegExp(
