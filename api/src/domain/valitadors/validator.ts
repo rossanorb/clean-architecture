@@ -5,6 +5,8 @@ year: 2020
 Version: 2.0
 -------------------------------------------------------------------*/
 
+import NoSpecialChar from "./modules/nospecialchar";
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export type validatorType = {
@@ -153,6 +155,20 @@ export class Validator {
         if (!reg.test(value)) {
             const field_name = this.attribute(field);
             this.setError(field, "email", `O ${field_name} é inválido`);
+        }
+    }
+
+    nospecialchar(field: string): void {
+        const inputValue = this.data["" + field + ""] || "";
+        const fieldName = this.attribute(field);
+        const charsNotAllowed = NoSpecialChar(inputValue).join(", ");
+
+        if (charsNotAllowed.length > 0) {
+            this.setError(
+                field,
+                "not-allowedchars",
+                `${fieldName} possui caracteres não permitidos: ${charsNotAllowed}`
+            );
         }
     }
 }

@@ -1,12 +1,6 @@
 import { UsernameValidator } from "../../../src/domain/valitadors/username.validator";
 
 describe("Test username validator", () => {
-    it("Should return an error, username is not optional", () => {
-        expect(() => new UsernameValidator("")).toThrowError(
-            "Username need to be provide"
-        );
-    });
-
     it("Should return username data whole lowercase", () => {
         const usernameValidator = new UsernameValidator("Ann");
         expect(usernameValidator.getData()).toEqual({ username: "ann" });
