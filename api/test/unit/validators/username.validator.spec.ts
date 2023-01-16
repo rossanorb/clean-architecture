@@ -16,7 +16,7 @@ describe("Test username validator", () => {
     it("Should return email validators", () => {
         const usernameValidator = new UsernameValidator("ANN");
         expect(usernameValidator.getvalidators()).toEqual({
-            username: "required|minlength:5|maxlength:15"
+            username: "required|minlength:5|maxlength:15|nospecialchar"
         });
     });
 });
