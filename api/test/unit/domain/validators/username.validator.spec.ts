@@ -1,4 +1,4 @@
-import { UsernameValidator } from "../../../src/domain/valitadors/username.validator";
+import { UsernameValidator } from "../../../../src/domain/valitadors/username.validator";
 
 describe("Test username validator", () => {
     it("Should return username data whole lowercase", () => {

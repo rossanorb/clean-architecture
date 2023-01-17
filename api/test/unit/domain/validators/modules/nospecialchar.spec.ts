@@ -1,4 +1,4 @@
-import NoSpecialChar from "../../../../src/domain/valitadors/modules/nospecialchar";
+import NoSpecialChar from "../../../../../src/domain/valitadors/modules/nospecialchar";
 
 describe("Test module function NoSpecialChar", () => {
     it("Should return characters @, &, ! as invalids", () => {
