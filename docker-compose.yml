@@ -2,7 +2,7 @@ version: "3"
 
 services:
     api:
-        container_name: "audiovisao_api"
+        container_name: "ecommerce_api"
         build:
             ./api
         volumes:
@@ -12,11 +12,11 @@ services:
             - "9000:9000"
         labels:
             - "traefik.enable=true"
-            - "traefik.http.routers.node.rule=Host(`api.audiovisao-localhost.com`)"
+            - "traefik.http.routers.node.rule=Host(`api.ecommerce-localhost.com`)"
             - "traefik.http.routers.node.entrypoints=web"
     traefik:
         image: "traefik:v2.2"
-        container_name: "audiovisao_traefik"
+        container_name: "ecommerce_traefik"
         command:
             - "--api.insecure=true"
             - "--providers.docker=true"
