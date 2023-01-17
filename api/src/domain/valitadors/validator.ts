@@ -6,6 +6,7 @@ Version: 2.0
 -------------------------------------------------------------------*/
 
 import NoSpecialChar from "./modules/nospecialchar";
+import Password from "./modules/password";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -168,6 +169,33 @@ export class Validator {
                 field,
                 "not-allowedchars",
                 `${fieldName} possui caracteres não permitidos: ${charsNotAllowed}`
+            );
+        }
+    }
+
+    confirm(field: string) {
+        const value = this.data["" + field + ""];
+        const confirm = this.data["confirm_" + field + ""];
+
+        if (value && value != confirm) {
+            const fieldName = this.attribute(field);
+            this.setError(
+                field,
+                "password",
+                `Campos ${fieldName}s não coincidem`
+            );
+        }
+    }
+
+    password(field: string) {
+        const inputValue = this.data["" + field + ""];
+        const fieldName = this.attribute(field);
+
+        if (!Password(inputValue)) {
+            this.setError(
+                field,
+                "password",
+                `${fieldName} não segue os requisitos de complexidade`
             );
         }
     }
