@@ -1,7 +1,7 @@
-import { NameValidator } from "./../../../../src/domain/valitadors/name.validator";
+import NameValidator from "./../../../../src/domain/valitadors/name.validator";
 
 describe("Test name validator", () => {
-    it("Should return email data", () => {
+    it("Should return name data", () => {
         const nameValidator = new NameValidator("Ann");
         expect(nameValidator.getData()).toEqual({ name: "Ann" });
     });
@@ -13,14 +13,14 @@ describe("Test name validator", () => {
         });
     });
 
-    it("Should return name attribute as mail", () => {
+    it("Should return sobrenome attribute as name", () => {
         const nameValidator = new NameValidator("ann@gmail.com", "sobrenome");
         expect(nameValidator.getAttribute()).toEqual({
             name: "sobrenome"
         });
     });
 
-    it("Should return email validators", () => {
+    it("Should return name validators", () => {
         const nameValidator = new NameValidator("ann@gmail.com");
         expect(nameValidator.getvalidators()).toEqual({
             name: "required|minlength:2"

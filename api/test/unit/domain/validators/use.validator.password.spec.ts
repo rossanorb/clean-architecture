@@ -1,5 +1,5 @@
-import { PasswordValidator } from "../../../../src/domain/valitadors/password.validator";
-import { UseValidator } from "../../../../src/domain/valitadors/use.validator";
+import PasswordValidator from "../../../../src/domain/valitadors/password.validator";
+import UseValidator from "../../../../src/domain/valitadors/use.validator";
 
 describe("Test use validator password", () => {
     it("Should return that password is required", () => {

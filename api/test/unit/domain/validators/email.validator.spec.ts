@@ -1,4 +1,4 @@
-import { EmailValidator } from "./../../../../src/domain/valitadors/email.validator";
+import EmailValidator from "./../../../../src/domain/valitadors/email.validator";
 
 describe("Test email validator", () => {
     it("Should return email data", () => {

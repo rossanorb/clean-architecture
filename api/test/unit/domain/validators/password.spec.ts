@@ -1,4 +1,4 @@
-import { PasswordValidator } from "./../../../../src/domain/valitadors/password.validator";
+import PasswordValidator from "./../../../../src/domain/valitadors/password.validator";
 
 describe("Test password validaor", () => {
     it("should return password data", () => {

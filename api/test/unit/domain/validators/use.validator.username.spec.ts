@@ -1,5 +1,5 @@
-import { UseValidator } from "../../../../src/domain/valitadors/use.validator";
-import { UsernameValidator } from "../../../../src/domain/valitadors/username.validator";
+import UseValidator from "../../../../src/domain/valitadors/use.validator";
+import UsernameValidator from "../../../../src/domain/valitadors/username.validator";
 
 describe("Test use Validator Username", () => {
     it("Should return that username is required and it must have minimum 5 characters", () => {
