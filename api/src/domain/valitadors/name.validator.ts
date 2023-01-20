@@ -6,7 +6,7 @@ type nameOutputType = {
     name: string;
 };
 
-export class NameValidator {
+export default class NameValidator {
     private data: nameInputType;
     private attribute: nameInputType;
     private validators: nameInputType;

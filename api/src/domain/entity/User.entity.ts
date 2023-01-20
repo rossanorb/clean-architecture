@@ -1,3 +1,7 @@
+import ValidationException from "../valitadors/ValidationException";
+import NameValidator from "../valitadors/name.validator";
+import UseValidator from "../valitadors/use.validator";
+
 export type userType = {
     name: string;
     email: string;
@@ -16,16 +20,17 @@ export default class User {
     private admin;
 
     constructor(user: userType) {
-        if (!user.name) {
-            throw new Error("Name was not provided");
-        }
+        UseValidator.validate(new NameValidator(user.name));
 
-        this.name = user.name;
         this.name = user.name;
         this.email = user.email;
         this.login = user.login;
         this.password = user.password;
         this.active = user.active;
         this.admin = user.admin;
+
+        if (UseValidator.hasError()) {
+            throw new ValidationException(UseValidator.getErrors());
+        }
     }
 }

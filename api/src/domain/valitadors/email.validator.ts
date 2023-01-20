@@ -6,7 +6,7 @@ type emailOutputType = {
     email: string;
 };
 
-export class EmailValidator {
+export default class EmailValidator {
     private data: emailInputType;
     private attribute: emailInputType;
     private validators: emailInputType;

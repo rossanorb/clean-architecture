@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Validator } from "./validator";
 
-export class UseValidator {
+export default class UseValidator {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     static validator: any;
 

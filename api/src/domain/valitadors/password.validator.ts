@@ -15,7 +15,7 @@ type passwordOutputType = {
     password: string;
 };
 
-export class PasswordValidator {
+export default class PasswordValidator {
     private data: passwordInputType;
     private attribute: attributeType;
     private validators: validatorType;

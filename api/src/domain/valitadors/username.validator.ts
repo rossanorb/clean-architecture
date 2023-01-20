@@ -6,7 +6,7 @@ type usernameOutType = {
     username: string;
 };
 
-export class UsernameValidator {
+export default class UsernameValidator {
     private data: usernameInputType;
     private attribute: usernameInputType;
     private validators: usernameInputType;
