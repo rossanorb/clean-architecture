@@ -181,7 +181,7 @@ export class Validator {
             const fieldName = this.attribute(field);
             this.setError(
                 field,
-                "password",
+                "confirm",
                 `Campos ${fieldName}s não coincidem`
             );
         }
@@ -194,7 +194,7 @@ export class Validator {
         if (!Password(inputValue)) {
             this.setError(
                 field,
-                "password",
+                "compLexity",
                 `${fieldName} não segue os requisitos de complexidade`
             );
         }

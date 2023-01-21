@@ -7,7 +7,7 @@ describe("Test use validator password", () => {
         expect(UseValidator.getErrors()).toEqual({
             password: {
                 minlength: "Campo password deve possuir 8 caracteres ou mais",
-                password: "password não segue os requisitos de complexidade",
+                compLexity: "password não segue os requisitos de complexidade",
                 required: "O campo password é obrigatório"
             }
         });
@@ -19,7 +19,7 @@ describe("Test use validator password", () => {
         );
         expect(UseValidator.getErrors()).toEqual({
             password: {
-                password: "Campos passwords não coincidem"
+                confirm: "Campos passwords não coincidem"
             }
         });
     });
@@ -35,7 +35,7 @@ describe("Test use validator password", () => {
         UseValidator.validate(new PasswordValidator("@lucia123", "@lucia123"));
         expect(UseValidator.getErrors()).toEqual({
             password: {
-                password: "password não segue os requisitos de complexidade"
+                compLexity: "password não segue os requisitos de complexidade"
             }
         });
     });
@@ -45,7 +45,7 @@ describe("Test use validator password", () => {
         expect(UseValidator.getErrors()).toEqual({
             password: {
                 minlength: "Campo password deve possuir 8 caracteres ou mais",
-                password: "password não segue os requisitos de complexidade"
+                compLexity: "password não segue os requisitos de complexidade"
             }
         });
     });

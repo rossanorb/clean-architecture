@@ -1,6 +1,9 @@
 import ValidationException from "../valitadors/ValidationException";
 import NameValidator from "../valitadors/name.validator";
 import UseValidator from "../valitadors/use.validator";
+import EmailValidator from "../valitadors/email.validator";
+import UsernameValidator from "../valitadors/username.validator";
+import PasswordValidator from "../valitadors/password.validator";
 
 export type userType = {
     name: string;
@@ -21,6 +24,15 @@ export default class User {
 
     constructor(user: userType) {
         UseValidator.validate(new NameValidator(user.name));
+        UseValidator.validate(new EmailValidator(user.email));
+        UseValidator.validate(new UsernameValidator(user.login));
+        UseValidator.validate(
+            new PasswordValidator(user.password, user.password)
+        );
+
+        if (UseValidator.hasError()) {
+            throw new ValidationException(UseValidator.getErrors());
+        }
 
         this.name = user.name;
         this.email = user.email;
@@ -28,9 +40,5 @@ export default class User {
         this.password = user.password;
         this.active = user.active;
         this.admin = user.admin;
-
-        if (UseValidator.hasError()) {
-            throw new ValidationException(UseValidator.getErrors());
-        }
     }
 }
