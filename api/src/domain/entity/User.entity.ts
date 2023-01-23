@@ -1,4 +1,4 @@
-import ValidationException from "../valitadors/ValidationException";
+import ValidationException from "../valitadors/validationException";
 import NameValidator from "../valitadors/name.validator";
 import UseValidator from "../valitadors/use.validator";
 import EmailValidator from "../valitadors/email.validator";
