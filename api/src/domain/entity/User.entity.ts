@@ -4,8 +4,11 @@ import UseValidator from "../valitadors/use.validator";
 import EmailValidator from "../valitadors/email.validator";
 import UsernameValidator from "../valitadors/username.validator";
 import PasswordValidator from "../valitadors/password.validator";
+import UUID from "./uuid";
+import GeneratorIdAdapter from "../../infra/adapters/uuid/generatorId.adapter";
 
 export type userType = {
+    id?: string | number;
     name: string;
     email: string;
     login: string;
@@ -15,6 +18,7 @@ export type userType = {
 };
 
 export default class User {
+    private id;
     private name;
     private email;
     private login;
@@ -34,6 +38,9 @@ export default class User {
             throw new ValidationException(UseValidator.getErrors());
         }
 
+        const uuid = new UUID(new GeneratorIdAdapter(), user.id);
+
+        this.id = uuid.getId();
         this.name = user.name;
         this.email = user.email;
         this.login = user.login;
