@@ -1,4 +1,4 @@
-import UUIDInterface from "../../infra/adapters/uuid/uuid.interface";
+import UUIDInterface from "./uuid.interface";
 
 export default class UUID {
     private id: string | number;
