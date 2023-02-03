@@ -4,8 +4,10 @@ import UseValidator from "../valitadors/use.validator";
 import EmailValidator from "../valitadors/email.validator";
 import UsernameValidator from "../valitadors/username.validator";
 import PasswordValidator from "../valitadors/password.validator";
-import UUID from "./uuid";
+import UUID from "../../infra/adapters/uuid/uuid";
 import GeneratorIdAdapter from "../../infra/adapters/uuid/generatorId.adapter";
+import Encryper from "../../infra/adapters/encrypt/encrypter";
+import EncrypterAdapter from "../../infra/adapters/encrypt/encrypter.adapter";
 
 export type userType = {
     id?: string | number;
@@ -39,12 +41,13 @@ export default class User {
         }
 
         const uuid = new UUID(new GeneratorIdAdapter(), user.id);
+        const encrypter = new Encryper(new EncrypterAdapter());
 
         this.id = uuid.getId();
         this.name = user.name;
         this.email = user.email;
         this.login = user.login;
-        this.password = user.password;
+        this.password = encrypter.encrypt(user.password);
         this.active = user.active;
         this.admin = user.admin;
     }
