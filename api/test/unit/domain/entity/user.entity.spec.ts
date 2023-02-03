@@ -125,6 +125,13 @@ describe("Test user Entity", () => {
         const userCreated = new User(userdata);
 
         expect(userCreated).toBeInstanceOf(User);
-        expect(userCreated).toEqual(userdata);
+        expect(userCreated).toMatchObject({
+            id: 1123,
+            name: "Tae",
+            email: "taetakemi@ps5.jp",
+            login: "taetakemi",
+            active: true,
+            admin: true
+        });
     });
 });
