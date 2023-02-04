@@ -1,5 +1,5 @@
-import UUID from "../../../../../src/infra/adapters/uuid/uuid";
-import GeneratorIdAdapter from "../../../../../src/infra/adapters/uuid/generatorId.adapter";
+import UUID from "../../../../../src/domain/uuid";
+import { GeneratorIdAdapter } from "../../../../../src/infra/adapters";
 
 describe("Test Generator Id", () => {
     it("Should be generate a new Id", () => {

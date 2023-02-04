@@ -4,10 +4,9 @@ import UseValidator from "../valitadors/use.validator";
 import EmailValidator from "../valitadors/email.validator";
 import UsernameValidator from "../valitadors/username.validator";
 import PasswordValidator from "../valitadors/password.validator";
-import UUID from "../../infra/adapters/uuid/uuid";
-import GeneratorIdAdapter from "../../infra/adapters/uuid/generatorId.adapter";
-import Encryper from "../../infra/adapters/encrypt/encrypter";
-import EncrypterAdapter from "../../infra/adapters/encrypt/encrypter.adapter";
+import UUID from "../uuid";
+import Encryper from "../encrypter";
+import { EncrypterAdapter, GeneratorIdAdapter } from "../../infra/adapters";
 
 export type userType = {
     id?: string | number;
