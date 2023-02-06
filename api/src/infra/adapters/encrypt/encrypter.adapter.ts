@@ -1,5 +1,5 @@
 import * as bcrypt from "bcrypt";
-import EncrypterInterface from "../../../domain/encrypter.interface";
+import EncrypterInterface from "../../../domain/adapters/encrypter.interface";
 
 export class EncrypterAdapter implements EncrypterInterface {
     encrypt(input: string): string {

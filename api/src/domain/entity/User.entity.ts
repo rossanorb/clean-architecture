@@ -4,9 +4,9 @@ import UseValidator from "../valitadors/use.validator";
 import EmailValidator from "../valitadors/email.validator";
 import UsernameValidator from "../valitadors/username.validator";
 import PasswordValidator from "../valitadors/password.validator";
-import UUID from "../uuid";
-import Encryper from "../encrypter";
-import { EncrypterAdapter, GeneratorIdAdapter } from "../../infra/adapters";
+import UUID from "../adapters/uuid";
+import Encryper from "../adapters/encrypter";
+import Adapters from "../adapters/adapters";
 
 export type userType = {
     id?: string | number;
@@ -39,8 +39,8 @@ export default class User {
             throw new ValidationException(UseValidator.getErrors());
         }
 
-        const uuid = new UUID(new GeneratorIdAdapter(), user.id);
-        const encrypter = new Encryper(new EncrypterAdapter());
+        const uuid = new UUID(Adapters.generatorIdInstance(), user.id);
+        const encrypter = new Encryper(Adapters.encrypterAdapter());
 
         this.id = uuid.getId();
         this.name = user.name;

@@ -1,4 +1,4 @@
-import UUID from "../../../../../src/domain/uuid";
+import UUID from "../../../../../src/domain/adapters/uuid";
 import { GeneratorIdAdapter } from "../../../../../src/infra/adapters";
 
 describe("Test Generator Id", () => {
