@@ -39,7 +39,7 @@ export default class User {
             throw new ValidationException(UseValidator.getErrors());
         }
 
-        const uuid = new UUID(Adapters.generatorIdInstance(), user.id);
+        const uuid = new UUID(Adapters.generatorIdAdapter(), user.id);
         const encrypter = new Encryper(Adapters.encrypterAdapter());
 
         this.id = uuid.getId();

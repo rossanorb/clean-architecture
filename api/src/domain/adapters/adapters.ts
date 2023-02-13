@@ -3,7 +3,7 @@ import EncrypterInterface from "./encrypter.interface";
 import UUIDInterface from "./uuid.interface";
 
 export default class Adapters {
-    static generatorIdInstance(): UUIDInterface {
+    static generatorIdAdapter(): UUIDInterface {
         return new GeneratorIdAdapter();
     }
 
