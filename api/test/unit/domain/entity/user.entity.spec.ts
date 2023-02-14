@@ -8,6 +8,7 @@ describe("Test user Entity", () => {
             email: "taetakemi@ps5.jp",
             login: "taetakemi",
             password: "@taKemi389",
+            confirm_password: "@taKemi389",
             active: true,
             admin: true
         };
@@ -21,6 +22,7 @@ describe("Test user Entity", () => {
             email: "taetakemi@ps5.jp",
             login: "taetakemi",
             password: "@taKemi389",
+            confirm_password: "@taKemi389",
             active: true,
             admin: true
         };
@@ -44,6 +46,7 @@ describe("Test user Entity", () => {
             email: "taetakemi@",
             login: "taetakemi",
             password: "@taKemi389",
+            confirm_password: "@taKemi389",
             active: true,
             admin: true
         };
@@ -67,6 +70,7 @@ describe("Test user Entity", () => {
             email: "taetakemi@ps5.jp",
             login: "#tae-takemi",
             password: "@taKemi389",
+            confirm_password: "@taKemi389",
             active: true,
             admin: true
         };
@@ -91,6 +95,7 @@ describe("Test user Entity", () => {
             email: "taetakemi@ps5.jp",
             login: "taetakemi",
             password: "@takemi",
+            confirm_password: "@takemi",
             active: true,
             admin: true
         };
@@ -111,6 +116,31 @@ describe("Test user Entity", () => {
         expect(() => new User(userdata)).toThrowError();
     });
 
+    it("Should throw error if confirm password and password are differents", () => {
+        const userdata: userType = {
+            id: 1123,
+            name: "Tae",
+            email: "taetakemi@ps5.jp",
+            login: "taetakemi",
+            password: "@taKemi389",
+            confirm_password: "taKemi389",
+            active: true,
+            admin: true
+        };
+
+        try {
+            new User(userdata);
+        } catch (e: any) {
+            expect(e.errors).toEqual({
+                password: {
+                    confirm: "Campos passwords não coincidem"
+                }
+            });
+        }
+
+        expect(() => new User(userdata)).toThrowError();
+    });
+
     it("Should crate an User Entity", () => {
         const userdata: userType = {
             id: 1123,
@@ -118,6 +148,7 @@ describe("Test user Entity", () => {
             email: "taetakemi@ps5.jp",
             login: "taetakemi",
             password: "@taKemi389",
+            confirm_password: "@taKemi389",
             active: true,
             admin: true
         };

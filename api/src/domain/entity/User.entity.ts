@@ -14,6 +14,7 @@ export type userType = {
     email: string;
     login: string;
     password: string;
+    confirm_password: string;
     active: boolean;
     admin: boolean;
 };
@@ -32,7 +33,7 @@ export default class User {
         UseValidator.validate(new EmailValidator(user.email));
         UseValidator.validate(new UsernameValidator(user.login));
         UseValidator.validate(
-            new PasswordValidator(user.password, user.password)
+            new PasswordValidator(user.password, user.confirm_password)
         );
 
         if (UseValidator.hasError()) {
